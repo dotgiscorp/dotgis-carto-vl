@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "strictNullChecks": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "declaration": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "lib": ["dom.iterable"],
+    "skipLibCheck": true,
+    "typeRoots": [
+      "index.d.ts",
+      "node_modules/@types"
+    ]
+  },
+  "include": [
+    "./src/**/*.tsx",
+    "./src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

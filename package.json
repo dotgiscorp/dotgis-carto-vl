@@ -1,0 +1,28 @@
+{
+  "name": "@dotgis/carto-vl",
+  "version": "1.0.11",
+  "homepage": "https://github.com/dotgiscorp/dotgis-carto-vl#readme",
+  "description": "A React binding of CARTO VL",
+  "main": "lib/index.js",
+  "repository": "git@github.com:dotgiscorp/dotgis-carto-vl.git",
+  "scripts": {
+    "build": "rm -rf ./lib && tsc",
+    "prepare": "npm build"
+  },
+  "author": "dotgis",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/mapbox-gl": "^1.9.1",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@carto/carto-vl": "^1.4.6",
+    "geojson": "^0.5.0",
+    "lodash.isequal": "^4.5.0",
+    "mapbox-gl": "^1.10.0"
+  }
+}
