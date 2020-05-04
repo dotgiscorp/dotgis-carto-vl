@@ -5,6 +5,10 @@
 [![npm version](https://img.shields.io/npm/v/@dotgis/carto-vl.svg?style=flat)](https://www.npmjs.com/package/@dotgis/carto-vl)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-blue.svg)](https://github.com/microsoft/TypeScript)
 
+***
+
+<img src="./thumb.png" alt="example-thumb">
+
 ## Getting Started
 
 ```
