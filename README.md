@@ -1,4 +1,4 @@
-# dotgis-carto-vl 
+# dotgis-carto-vl
 
 > CARTO VL React components 
 
@@ -9,25 +9,83 @@
 
 <img src="./thumb.png" alt="example-thumb">
 
-## Getting Started
+### NPM Module
 
+```bash
+npm install @dotgis/carto-vl
 ```
-npm install @dotgis/carto-vl --save
+
+### Example
+
+```jsx
+import mapboxgl from 'mapbox-gl';
+import { SQLLayer } from '@dotgis/carto-vl';
+
+const [mapObject, setMap] = React.useState();
+
+React.useEffect(() => {
+    const map = new Map({
+      container: 'map-container',
+      style: 'mapbox://styles/mapbox/dark-v10',
+      center: [0, 15],
+      zoom: 1.5
+    });
+
+    setMap(map);
+}, []);
+
+// in render()
+{mapObject && (
+  <SQLLayer
+    mapInstance={mapObject}
+    basemapId="waterway-label"
+    name="test-layer"
+    query={QUERY}
+    fields={['cartodb_id']}
+    user="dotgis"
+    apiKey="default_public"
+    width="(sqrt($testField) / 25) + 3"
+    color="opacity(turquoise, 0.8)"
+    strokeWidth={0}
+  />
+)}
 ```
 
-## SQLLayer
+***
 
-Creates a new [CARTO VL SQL layer](https://carto.com/developers/carto-vl/reference/#cartosourcesql) fetching data from a CARTO account 
+## [SQLLayer](https://github.com/AdriSolid/dotgis-carto-vl/tree/master/examples/sql-layer)
+
+Creates a new [CARTO VL SQL layer](https://carto.com/developers/carto-vl/reference/#cartosourcesql). Fetch MVT from a CARTO account.
+
+If you change the value of some `carto.expressions`, it will automatically update this property using `blendTo`
+
+### How to use
+
+```jsx
+import { SQLLayer } from '@dotgis/carto-vl';
+
+...
+
+<SQLLayer
+    mapInstance={mapObject}
+    basemapId="waterway-label"
+    name="test-layer"
+    query={QUERY}
+    fields={['cartodb_id']}
+    user="dotgis"
+    apiKey="default_public"
+  />
+```
 
 ### Properties
 
-* **mapInstance**: `object` The Mapbox map instance
-* **basemapId** : `string` The basemap style
+* **mapInstance**: `object` Mapbox map object
+* **basemapId** : `string` Basemap style
 * **name** : `string` Layer name
 * **query** : `string` SQL query to the CARTO account (must include 'cartodb_id' & 'the_geom_webmercator' fields)
-* **fields** : `array` The fields to get the 'viewport features'. All the fields you include here must appear in the 'query' property string
-* **user** : `string` The CARTO account user name
-* **apiKey** : `string` The CARTO account API Key
+* **fields** : `array` Fields to get the 'viewport features'. All the fields you include here must appear in the 'query' property string
+* **user** : `string` CARTO account user name
+* **apiKey** : `string` CARTO account API Key
 * **color** (Default: `'rgba(0, 255, 0, .1)'`): `string` Could be: hexadecimal, hsl, hsla, hsv, hsva, namedColor, rgb or rgba
 * **strokeColor** (Default: `'rgb(0, 255, 0)'`): `string` Stroke/border color of points and polygons, not applicable to lines
 * **width** (Default: `1`): `number` Fill diameter of points, thickness of lines, not applicable to polygon
@@ -36,7 +94,7 @@ Creates a new [CARTO VL SQL layer](https://carto.com/developers/carto-vl/referen
 * **minzoom** (Default: `1`): `number` Minimum zoom level for which tiles are available, as in the TileJSON spec
 * **maxzoom** (Default: `22`): `number` Maximum zoom level for which tiles are available, as in the TileJSON spec. Data from tiles at the maxzoom are used when displaying the map at higher zoom level
 * **visible** (Default: `true`): `boolean` Fill diameter of points, thickness of lines, not applicable to polygon
-* **onLoaded** : `(message: string) => void` The 'loaded' event will be fired when all the layers are loaded (and their 'loaded' events are fired
+* **onLoaded** : `(message: string) => void` 'loaded' event will be fired when all the layers are loaded (and their 'loaded' events are fired)
 * **featureClick** : `(event: any, coords: Coords) => void` featureClick events are fired when the user clicks on features. The list of features behind the cursor is provided
 * **featureEnter** : `(event: any, coords: Coords) => void` featureEnter events are fired when the user moves the cursor and the movement implies that a non-previously hovered feature (as reported by featureHover or featureLeave) is now under the cursor. The list of features that are now behind the cursor and that weren't before is provided
 * **featureLeave** : `(event: any) => void` featureLeave events are fired when the user moves the cursor and the movement implies that a previously hovered feature (as reported by featureHover or featureEnter) is no longer behind the cursor. The list of features that are no longer behind the cursor and that were before is provided

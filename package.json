@@ -1,6 +1,6 @@
 {
   "name": "@dotgis/carto-vl",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "homepage": "https://github.com/dotgiscorp/dotgis-carto-vl#readme",
   "description": "A React binding of CARTO VL",
   "main": "lib/index.js",
